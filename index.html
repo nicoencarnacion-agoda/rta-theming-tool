@@ -314,7 +314,7 @@
       filter: brightness(0) invert(1);
     }
 
-    @media (max-width: 767.98px) {
+    @media (max-width: 991.98px) {
       #page-nav ul {
         justify-content: flex-start;
       }
@@ -453,7 +453,7 @@
     }
 
     /* Mobile checkout navbar styles */
-    @media (max-width: 767.98px) {
+    @media (max-width: 991.98px) {
       #checkout-navbar {
         padding-top: 12px !important;
         padding-bottom: 12px !important;
@@ -877,7 +877,7 @@
       flex-direction: column;
       align-items: flex-start;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 991.98px) {
       .hotel-details-card {
         flex-direction: column;
       }
@@ -956,7 +956,7 @@
       flex-direction: column;
       align-items: flex-start;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 991.98px) {
       .edit-booking-card {
         flex-direction: column;
       }
@@ -1086,6 +1086,12 @@
       font-size: 0.875rem;
       margin-bottom: 0.25rem;
     }
+    .promo-content {
+      flex: 1;
+    }
+    .results-promo-banner {
+      margin-bottom: 1rem;
+    }
     .search-tabs .nav-link {
       color: #5E6B82 !important;
       border: none !important;
@@ -1129,7 +1135,7 @@
 
       /* Search results page styles */
       .search-header {
-        padding: 1rem 0 1.5rem;
+        padding: 1rem 0 0;
         margin-bottom: 1.5rem;
       }
 
@@ -1143,6 +1149,10 @@
         border: 1px solid var(--border-neutral-3);
         border-radius: 8px;
         margin-bottom: 1rem;
+      }
+
+      .mobile-search-header {
+        display: none;
       }
 
       .mobile-search-item {
@@ -1161,11 +1171,336 @@
 
       @media (max-width: 991.98px) {
         .search-header form {
-          display: none;
+          display: none !important;
         }
         
         .mobile-search-summary {
+          display: none !important;
+        }
+
+        /* Hide left sidebar content (map, filters) on mobile */
+        #search-results .col-lg-3 {
+          display: none !important;
+        }
+
+        /* Hide sorting bar on mobile */
+        .sorting-bar {
+          display: none !important;
+        }
+
+        /* Smaller promo icon on mobile */
+        .promo-icon {
+          width: 32px !important;
+          height: 32px !important;
+          font-size: 1rem !important;
+        }
+        .promo-icon i {
+          font-size: 18px !important;
+        }
+
+        /* Mobile hotel card content rearrangement */
+        .hotel-stars {
+          display: block !important;
+          margin-bottom: 4px;
+        }
+
+        .hotel-score-mobile {
+          display: flex !important;
+          align-items: center;
+          gap: 4px;
+          margin-bottom: 8px;
+        }
+
+        .hotel-score-mobile .score-number {
+          color: var(--text-primary-interactive);
+          font-weight: 600;
+          font-size: 12px;
+        }
+
+        .hotel-score-mobile .score-label {
+          color: var(--text-primary-interactive);
+          font-weight: 500;
+          font-size: 12px;
+        }
+
+        .hotel-score-mobile .score-reviews {
+          color: var(--text-neutral-2);
+          font-size: 12px;
+          margin-top: 0;
+        }
+
+        .hotel-location-mobile {
+          display: flex !important;
+          align-items: center;
+          gap: 4px;
+          margin-bottom: 8px;
+          color: var(--text-primary-interactive);
+          font-size: 12px;
+        }
+
+        .hotel-location-mobile i {
+          font-size: 14px;
+          width: 14px;
+          height: 14px;
+        }
+
+        .hotel-rating-location {
+          display: none !important;
+        }
+
+        .offers-label {
+          display: none !important;
+        }
+
+        .hotel-offers {
+          margin-bottom: 0;
+        }
+
+        .hotel-amenities {
+          margin-bottom: 0 !important;
+        }
+
+        /* Hide hotel card thumbnails on mobile - show only main image */
+        .hotel-thumbnails {
+          display: none !important;
+        }
+
+        /* Mobile Search Header Styles */
+        .mobile-search-header {
+          display: block !important;
+        }
+
+        .mobile-search-row {
           display: flex;
+          gap: 12px;
+          margin-bottom: 12px;
+          align-items: stretch;
+        }
+
+        .mobile-search-box {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 16px;
+          border: 1px solid var(--border-neutral-3);
+          border-radius: 8px;
+          background: white;
+        }
+
+        .mobile-search-content {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .mobile-search-destination {
+          font-size: 1rem;
+          font-weight: 500;
+          color: var(--text-neutral-1);
+        }
+
+        .mobile-search-dates {
+          font-size: 0.9rem;
+          color: var(--text-neutral-2);
+        }
+
+        .mobile-search-icon-btn {
+          font-size: 1.25rem;
+          color: var(--text-neutral-1);
+        }
+
+        .mobile-map-btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 16px;
+          color: var(--text-primary-interactive);
+          font-size: 0.85rem;
+          font-weight: 500;
+        }
+
+        .mobile-map-btn i {
+          font-size: 1.5rem;
+          margin-bottom: 2px;
+        }
+
+        .mobile-filter-row {
+          display: flex;
+          gap: 8px;
+        }
+
+        .mobile-filter-btn {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          height: 28px;
+          padding: 0 12px;
+          border: 1px solid var(--border-neutral-3);
+          border-radius: 4px;
+          background: white;
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--text-neutral-1);
+        }
+
+        .mobile-filter-btn i,
+        .mobile-filter-btn img {
+          color: var(--text-primary-interactive);
+          width: 16px;
+          height: 16px;
+        }
+
+        .mobile-filter-chip {
+          height: 28px;
+          padding: 0 12px;
+          border: 1px solid var(--border-neutral-3);
+          border-radius: 4px;
+          background: white;
+          font-size: 14px;
+          color: var(--text-neutral-1);
+        }
+
+        /* Mobile Hotel Page Header */
+        .mobile-hotel-header {
+          display: block !important;
+        }
+
+        /* Hide desktop elements on hotel page */
+        #property-page .search-header,
+        .back-navigation,
+        .property-image-grid,
+        .property-tabs-container {
+          display: none !important;
+        }
+
+        /* Booking Info Bar */
+        .mobile-booking-info {
+          display: flex;
+          align-items: center;
+          padding: 12px 0;
+          gap: 0;
+          border-bottom: 1px solid var(--border-neutral-3);
+          margin-bottom: 0;
+        }
+
+        .booking-info-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: var(--text-primary-interactive);
+          font-weight: 500;
+          padding: 0 16px;
+        }
+
+        .booking-info-item:first-child {
+          padding-left: 0;
+          flex: 1;
+        }
+
+        .booking-info-item:not(:last-child) {
+          border-right: 1px solid var(--border-neutral-3);
+        }
+
+        .booking-info-item i {
+          font-size: 18px;
+        }
+
+        /* Mobile Carousel */
+        .mobile-carousel {
+          position: relative;
+          width: calc(100% + 48px);
+          margin-left: -24px;
+          margin-right: -24px;
+          margin-bottom: 16px;
+        }
+
+        .carousel-image {
+          width: 100%;
+          height: 215px;
+          object-fit: cover;
+        }
+
+        .carousel-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: white;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .carousel-arrow i {
+          font-size: 20px;
+          font-weight: bold;
+          color: #000;
+        }
+
+        .carousel-arrow-left {
+          left: 12px;
+        }
+
+        .carousel-arrow-right {
+          right: 12px;
+        }
+
+        .carousel-dots {
+          position: absolute;
+          bottom: 16px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 8px;
+        }
+
+        .carousel-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.5);
+        }
+
+        .carousel-dot.active {
+          background: white;
+        }
+
+        .carousel-counter {
+          position: absolute;
+          bottom: 16px;
+          right: 16px;
+          background: rgba(0,0,0,0.6);
+          color: white;
+          padding: 4px 10px;
+          border-radius: 12px;
+          font-size: 12px;
+          font-weight: 500;
+        }
+
+        /* Stack property content sections on mobile */
+        .property-content {
+          flex-direction: column;
+        }
+
+        .property-left-column,
+        .property-right-column {
+          width: 100% !important;
+        }
+
+        /* Show only first 3 highlights on mobile */
+        .highlight-item:nth-child(n+4) {
+          display: none !important;
+        }
+
+        /* Hide info icons in highlights on mobile */
+        .highlight-text i {
+          display: none !important;
         }
       }
 
@@ -1555,7 +1890,7 @@
       color: var(--background-primary-brand);
       text-decoration: none;
       font-size: 0.9rem;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .filter-clear:hover {
@@ -1608,16 +1943,30 @@
       border-right: 1px solid var(--border-neutral-3);
     }
 
+    /* Hide mobile-only hotel info elements on desktop */
+    .hotel-stars,
+    .hotel-score-mobile,
+    .hotel-location-mobile {
+      display: none;
+    }
+
     .hotel-name {
-      font-size: 1.1rem;
+      font-size: 1.125rem;
       font-weight: 600;
       color: var(--text-neutral-1);
+      margin-bottom: 8px;
     }
 
     .hotel-location {
       color: var(--text-primary-interactive);
-      font-size: 0.9rem;
+      font-size: 12px;
       font-weight: 400;
+    }
+
+    .hotel-location i {
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
     }
 
     /* Hotel rating and location container */
@@ -1627,7 +1976,7 @@
 
     .hotel-rating-location .d-flex {
       flex-wrap: wrap;
-      gap: 0.5rem 1rem;
+      gap: 0.5rem;
     }
 
     .hotel-location {
@@ -1645,7 +1994,7 @@
       padding: 0.25rem 0.75rem;
       border-radius: 4px;
       font-size: 0.85rem;
-      margin-right: 0.5rem;
+      margin-right: 0.25rem;
       margin-bottom: 0.5rem;
       color: var(--text-neutral-1);
     }
@@ -1665,20 +2014,22 @@
       margin-bottom: 1rem;
     }
 
-    .score-number {
+    /* Desktop score styles (inside .hotel-score) */
+    .hotel-score .score-number {
       font-size: 1rem;
       font-weight: 600;
       color: var(--text-primary-interactive);
     }
 
-    .score-label {
+    .hotel-score .score-label {
       font-size: 1rem;
       color: var(--text-primary-interactive);
     }
 
-    .score-reviews {
+    .hotel-score .score-reviews {
       font-size: 0.85rem;
       color: var(--text-neutral-2);
+      margin-top: 4px;
     }
 
     .price-section {
@@ -2059,6 +2410,11 @@
     .filter-section .form-check-label[for="no-rating"] {
       color: #B54C01 !important;
     }
+
+      /* Mobile hotel header - hidden on desktop */
+      .mobile-hotel-header {
+        display: none;
+      }
 
       /* Property page image grid styles */
       .property-image-grid {
@@ -2458,8 +2814,8 @@
       .filter-title {
         font-size: var(--font-size-base);
         color: var(--text-neutral-1);
-        font-weight: 600;
-        margin: 0;
+        font-weight: 500;
+        margin-bottom: 12px;
       }
 
       .clear-all-link {
@@ -2512,22 +2868,43 @@
       }
 
       /* Responsive styles */
-    @media (max-width: 991px) {
+    @media (max-width: 991.98px) {
       .promo-banner, .search-form {
         padding: 1rem 0.5rem;
       }
       
       .hotel-card {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 112px 1fr;
+        grid-template-rows: auto auto;
       }
       
       .hotel-images {
-        width: 100%;
+        width: 112px;
+        grid-row: 1 / -1;
       }
-      
+
+      .hotel-main-image {
+        width: 112px;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 4px 0 0 4px;
+      }
+
+      .hotel-info {
+        padding: 12px;
+        border-right: none;
+      }
+
       .hotel-pricing {
+        padding: 0 12px 12px 12px;
+        text-align: right;
         width: 100%;
-        text-align: left;
+        grid-column: 2;
+      }
+
+      .hotel-score {
+        display: none;
       }
     }
 
@@ -3002,7 +3379,35 @@
     <div class="container" style="padding-left: 24px; padding-right: 24px;">
       <!-- Search Header -->
       <div class="search-header">
-        <!-- Mobile Search Summary -->
+        <!-- Mobile Search Header -->
+        <div class="mobile-search-header">
+          <div class="mobile-search-row">
+            <div class="mobile-search-box">
+              <div class="mobile-search-content">
+                <div class="mobile-search-destination" data-text="destination">Paradise Cove</div>
+                <div class="mobile-search-dates">Sep 01 - Sep 03</div>
+              </div>
+              <i class="bi bi-search mobile-search-icon-btn"></i>
+            </div>
+            <div class="mobile-map-btn">
+              <i class="bi bi-geo-alt-fill"></i>
+              <span>Map</span>
+            </div>
+          </div>
+          <div class="mobile-filter-row">
+            <button class="mobile-filter-btn">
+              <img src="assets/agoda-icons/filter.svg" alt="Filter">
+              <span>Filter</span>
+            </button>
+            <button class="mobile-filter-btn">
+              <span>Sort</span>
+              <i class="bi bi-chevron-down"></i>
+            </button>
+            <button class="mobile-filter-chip">Breakfast</button>
+          </div>
+        </div>
+
+        <!-- Mobile Search Summary (legacy - hidden) -->
         <div class="mobile-search-summary">
           <div class="mobile-search-item">
             <i class="bi bi-calendar3 mobile-search-icon"></i>
@@ -3069,7 +3474,7 @@
       <!-- Main Content Area -->
       <div class="row">
         <!-- Left Column - Filters -->
-        <div class="col-md-3">
+        <div class="col-lg-3">
           <!-- Map Section -->
           <div class="map-section mb-4">
             <button class="map-button">Show on map</button>
@@ -3273,11 +3678,17 @@
         </div>
 
         <!-- Right Column - Hotel Results -->
-        <div class="col-md-9">
-          <!-- Miles Toggle -->
-          <div class="miles-toggle">
-            <div class="miles-option">Earn miles</div>
-            <div class="miles-option active">Use miles</div>
+        <div class="col-lg-9">
+          <!-- Promotional Banner -->
+          <div class="promo-banner results-promo-banner">
+            <div class="promo-icon">
+              <i class="bi bi-tag-fill" style="font-size: 28px;"></i>
+            </div>
+            <div class="promo-content">
+              <h6 class="banner-title" data-text="banner-title" style="font-weight:600;">Title for a promotional banner</h6>
+              <p class="banner-subtitle" data-text="banner-subtitle">Subtitle for a promotional banner to give more details</p>
+              <a href="#" class="text-white text-decoration-underline mt-1 d-block text-md">See details</a>
+            </div>
           </div>
 
           <!-- Sorting Bar -->
@@ -3306,6 +3717,16 @@
             </div>
             <div class="hotel-info">
               <div class="hotel-name" data-text="hotel1-name">Hotel name</div>
+              <div class="hotel-stars text-warning">★★★★★</div>
+              <div class="hotel-score-mobile">
+                <span class="score-number">8.9</span>
+                <span class="score-label">Excellent</span>
+                <span class="score-reviews">2,500 reviews</span>
+              </div>
+              <div class="hotel-location-mobile">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span data-text="destination">Paradise Cove</span>
+              </div>
               <div class="hotel-rating-location">
                 <div class="d-flex align-items-center">
                   <div class="text-warning">★★★★★</div>
@@ -3315,8 +3736,8 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-3">
-                <p class="mb-2 small fw-medium">This property offers:</p>
+              <div class="hotel-offers">
+                <p class="mb-2 small fw-medium offers-label">This property offers:</p>
                 <div class="hotel-amenities">
                   <span class="hotel-amenity">Free cancellation</span>
                   <span class="hotel-amenity">Free WiFi</span>
@@ -3356,6 +3777,16 @@
             </div>
             <div class="hotel-info">
               <div class="hotel-name" data-text="hotel2-name">Hotel name</div>
+              <div class="hotel-stars text-warning">★★★★★</div>
+              <div class="hotel-score-mobile">
+                <span class="score-number">8.9</span>
+                <span class="score-label">Excellent</span>
+                <span class="score-reviews">2,500 reviews</span>
+              </div>
+              <div class="hotel-location-mobile">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span data-text="destination">Paradise Cove</span>
+              </div>
               <div class="hotel-rating-location">
                 <div class="d-flex align-items-center">
                   <div class="text-warning">★★★★★</div>
@@ -3365,8 +3796,8 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-3">
-                <p class="mb-2 small fw-medium">This property offers:</p>
+              <div class="hotel-offers">
+                <p class="mb-2 small fw-medium offers-label">This property offers:</p>
                 <div class="hotel-amenities">
                   <span class="hotel-amenity">Free WiFi</span>
                 </div>
@@ -3404,6 +3835,16 @@
             </div>
             <div class="hotel-info">
               <div class="hotel-name" data-text="hotel3-name">Hotel name</div>
+              <div class="hotel-stars text-warning">★★★★★</div>
+              <div class="hotel-score-mobile">
+                <span class="score-number">8.9</span>
+                <span class="score-label">Excellent</span>
+                <span class="score-reviews">2,500 reviews</span>
+              </div>
+              <div class="hotel-location-mobile">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span data-text="destination">Paradise Cove</span>
+              </div>
               <div class="hotel-rating-location">
                 <div class="d-flex align-items-center">
                   <div class="text-warning">★★★★★</div>
@@ -3413,8 +3854,8 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-3">
-                <p class="mb-2 small fw-medium">This property offers:</p>
+              <div class="hotel-offers">
+                <p class="mb-2 small fw-medium offers-label">This property offers:</p>
                 <div class="hotel-amenities">
                   <span class="hotel-amenity">Free cancellation</span>
                 </div>
@@ -3452,6 +3893,16 @@
             </div>
             <div class="hotel-info">
               <div class="hotel-name" data-text="hotel4-name">Hotel name</div>
+              <div class="hotel-stars text-warning">★★★★★</div>
+              <div class="hotel-score-mobile">
+                <span class="score-number">8.9</span>
+                <span class="score-label">Excellent</span>
+                <span class="score-reviews">2,500 reviews</span>
+              </div>
+              <div class="hotel-location-mobile">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span data-text="destination">Paradise Cove</span>
+              </div>
               <div class="hotel-rating-location">
                 <div class="d-flex align-items-center">
                   <div class="text-warning">★★★★★</div>
@@ -3461,8 +3912,8 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-3">
-                <p class="mb-2 small fw-medium">This property offers:</p>
+              <div class="hotel-offers">
+                <p class="mb-2 small fw-medium offers-label">This property offers:</p>
                 <div class="hotel-amenities">
                   <span class="hotel-amenity">Free WiFi</span>
                 </div>
@@ -3500,6 +3951,16 @@
             </div>
             <div class="hotel-info">
               <div class="hotel-name" data-text="hotel5-name">Hotel name</div>
+              <div class="hotel-stars text-warning">★★★★★</div>
+              <div class="hotel-score-mobile">
+                <span class="score-number">8.9</span>
+                <span class="score-label">Excellent</span>
+                <span class="score-reviews">2,500 reviews</span>
+              </div>
+              <div class="hotel-location-mobile">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span data-text="destination">Paradise Cove</span>
+              </div>
               <div class="hotel-rating-location">
                 <div class="d-flex align-items-center">
                   <div class="text-warning">★★★★★</div>
@@ -3509,8 +3970,8 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-3">
-                <p class="mb-2 small fw-medium">This property offers:</p>
+              <div class="hotel-offers">
+                <p class="mb-2 small fw-medium offers-label">This property offers:</p>
                 <div class="hotel-amenities">
                   <span class="hotel-amenity">Free cancellation</span>
                 </div>
@@ -3606,8 +4067,46 @@
         </form>
       </div>
 
+      <!-- Mobile Hotel Header -->
+      <div class="mobile-hotel-header">
+        <!-- Booking Info Bar -->
+        <div class="mobile-booking-info">
+          <div class="booking-info-item">
+            <i class="bi bi-calendar3"></i>
+            <span>Sep 1 - Sep 3</span>
+          </div>
+          <div class="booking-info-item">
+            <i class="bi bi-people-fill"></i>
+            <span>2</span>
+          </div>
+          <div class="booking-info-item">
+            <i class="bi bi-door-closed-fill"></i>
+            <span>2</span>
+          </div>
+        </div>
+
+        <!-- Static Carousel -->
+        <div class="mobile-carousel">
+          <img src="assets/hotels/170840277.jpg" alt="Hotel Image" class="carousel-image" data-image="hotel1-image">
+          <button class="carousel-arrow carousel-arrow-left">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button class="carousel-arrow carousel-arrow-right">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+          <div class="carousel-dots">
+            <span class="carousel-dot active"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+          </div>
+          <div class="carousel-counter">1/5</div>
+        </div>
+      </div>
+
       <!-- Back Navigation -->
-      <div class="mb-3">
+      <div class="back-navigation mb-3">
         <a href="#" class="text-link" onclick="showSearchResults(); return false;">
           View all 4,491 properties in <span data-text="destination">Paradise Cove</span>
         </a>
@@ -3649,7 +4148,7 @@
       <!-- Main Content Area -->
       <div class="row">
         <!-- Property Tabs with Price -->
-        <div class="col-12">
+        <div class="col-12 property-tabs-container">
           <div class="d-flex justify-content-between align-items-center mb-0">
             <ul class="nav nav-tabs property-tabs mb-0" id="propertyTab" role="tablist">
               <li class="nav-item" role="presentation">
