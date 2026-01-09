@@ -1370,15 +1370,467 @@
         #property-page .search-header,
         .back-navigation,
         .property-image-grid,
-        .property-tabs-container {
+        .property-tabs-container,
+        #property-page .row {
           display: none !important;
+        }
+
+        /* Full width content on hotel page mobile */
+        #property-page > .container {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        /* Mobile Property Content */
+        .mobile-property-content {
+          display: flex !important;
+          flex-direction: column;
+          gap: 12px;
+          background-color: #EFF4FC;
+        }
+
+        .mobile-section {
+          background: white;
+          padding: 16px;
+        }
+
+        /* Top rated badge */
+        .top-rated-badge {
+          display: inline-block;
+          background: var(--background-primary-brand);
+          color: white;
+          padding: 4px 12px;
+          border-radius: 4px;
+          font-size: 12px;
+          font-weight: 500;
+          margin-bottom: 12px;
+        }
+
+        /* Mobile hotel name */
+        .mobile-hotel-name {
+          font-size: 22px;
+          font-weight: 600;
+          color: var(--text-neutral-1);
+          margin: 0 0 8px 0;
+        }
+
+        /* Rating row */
+        .mobile-rating-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+
+        .rating-left {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .rating-left .stars {
+          font-size: 14px;
+        }
+
+        .mobile-location {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          color: var(--text-primary-interactive);
+          font-size: 14px;
+        }
+
+        .rating-right {
+          text-align: right;
+        }
+
+        .score-text {
+          color: var(--text-primary-interactive);
+          font-weight: 600;
+          font-size: 16px;
+        }
+
+        .reviews-count {
+          color: var(--text-neutral-2);
+          font-size: 14px;
+        }
+
+        /* Section header */
+        .section-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 12px;
+        }
+
+        .section-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: var(--text-neutral-1);
+          margin: 0;
+        }
+
+        .section-link {
+          color: var(--text-primary-interactive);
+          font-size: 14px;
+          text-decoration: none;
+        }
+
+        /* Review tags */
+        .review-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-bottom: 12px;
+        }
+
+        .review-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background-color: #E9EFFA;
+          color: #4A5466;
+          padding: 6px 12px;
+          border-radius: 4px;
+          font-size: 14px;
+        }
+
+        .review-tag i {
+          color: #4A5466;
+          font-size: 14px;
+        }
+
+        /* Review cards */
+        .review-cards {
+          display: flex;
+          gap: 12px;
+          overflow: visible;
+        }
+
+        .review-card {
+          flex-shrink: 0;
+          width: 230px;
+          min-height: 90px;
+          background: #EFF4FC;
+          border-radius: 4px;
+          padding: 16px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .review-quote {
+          font-size: 12px;
+          color: var(--text-neutral-2);
+          margin-bottom: 8px;
+        }
+
+        .review-author {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 12px;
+          color: var(--text-neutral-2);
+          font-weight: 600;
+        }
+
+        /* Property Highlights Section (Mobile) */
+        .mobile-highlights-section {
+          display: block !important;
+          background: white;
+          padding: 16px;
+        }
+
+        .popular-badge-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding-bottom: 16px;
+          margin-bottom: 16px;
+          border-bottom: 1px solid var(--border-neutral-3, #e5e7eb);
+        }
+
+        .popular-badge {
+          background: var(--background-primary-interactive);
+          color: white;
+          padding: 6px 12px;
+          border-radius: 4px;
+          font-size: 14px;
+          font-weight: 600;
+        }
+
+        .booked-today {
+          font-size: 14px;
+          color: var(--text-neutral-1);
+        }
+
+        .mobile-highlights-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: var(--text-neutral-1);
+          margin-bottom: 16px;
+        }
+
+        .mobile-highlights-grid {
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
+          margin-bottom: 16px;
+        }
+
+        .mobile-highlight-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          flex: 1;
+        }
+
+        .mobile-highlight-icon {
+          width: 24px;
+          height: 24px;
+        }
+
+        .mobile-highlight-text {
+          font-size: 12px;
+          color: var(--text-neutral-1);
+          text-align: center;
+          line-height: 1.3;
+        }
+
+        .mobile-highlights-divider {
+          border: none;
+          border-top: 1px solid var(--border-neutral-3);
+          margin: 16px 0;
+        }
+
+        .mobile-offerings-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: var(--text-neutral-1);
+          margin-bottom: 12px;
+        }
+
+        .mobile-offerings-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px 16px;
+        }
+
+        .mobile-offering-item {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 12px;
+          color: var(--text-neutral-2);
+        }
+
+        .mobile-offering-item i {
+          color: #198754;
+          font-size: 16px;
+        }
+
+        /* Location Section (Mobile) */
+        .mobile-location-section {
+          display: block !important;
+          background: white;
+          padding: 16px;
+        }
+
+        .mobile-location-header {
+          display: flex;
+          align-items: baseline;
+          gap: 8px;
+          margin-bottom: 12px;
+        }
+
+        .mobile-location-score {
+          font-size: 20px;
+          font-weight: 600;
+          color: var(--text-neutral-1);
+        }
+
+        .mobile-location-title {
+          font-size: 20px;
+          font-weight: 600;
+          color: var(--text-neutral-1);
+        }
+
+        .mobile-location-content {
+          display: flex;
+          gap: 16px;
+        }
+
+        .mobile-location-info {
+          flex: 1;
+        }
+
+        .mobile-location-address {
+          font-size: 12px;
+          font-weight: 500;
+          color: var(--text-neutral-1);
+          margin-bottom: 12px;
+          line-height: 1.4;
+        }
+
+        .mobile-location-list {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          margin-bottom: 12px;
+          list-style: none;
+          padding: 0;
+          margin-top: 0;
+        }
+
+        .mobile-location-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 14px;
+          color: var(--text-neutral-1);
+        }
+
+        .mobile-location-item img {
+          width: 18px;
+          height: 18px;
+        }
+
+        .mobile-location-item .distance {
+          margin-left: auto;
+          font-weight: 600;
+        }
+
+        .mobile-location-map {
+          width: 140px;
+          min-height: 140px;
+          border-radius: 8px;
+          flex-shrink: 0;
+          background-image: url('assets/map-bg.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .mobile-see-nearby {
+          display: block;
+          margin-top: 12px;
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--text-primary-interactive);
+          text-decoration: none;
+        }
+
+        /* Mobile Banner Section */
+        .mobile-banner-section {
+          background: var(--background-primary-brand);
+          color: var(--text-neutral-4);
+          padding: 20px 16px;
+          display: flex;
+          align-items: flex-start;
+          gap: 16px;
+        }
+
+        .mobile-banner-section .promo-icon {
+          background: var(--background-neutral-1);
+          color: var(--background-primary-brand);
+          border-radius: 50%;
+          width: 48px;
+          height: 48px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .mobile-banner-section .banner-content {
+          flex: 1;
+        }
+
+        .mobile-banner-section .banner-title {
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 4px;
+          line-height: 1.3;
+        }
+
+        .mobile-banner-section .banner-subtitle {
+          font-size: 14px;
+          opacity: 0.9;
+          margin-bottom: 8px;
+          line-height: 1.4;
+        }
+
+        .mobile-banner-section .banner-link {
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--text-neutral-4);
+          text-decoration: underline;
+        }
+
+        /* Mobile Filter Section */
+        .mobile-filter-section {
+          background: white;
+          padding: 20px 16px;
+        }
+
+        .mobile-filter-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 16px;
+        }
+
+        .mobile-filter-title {
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--text-neutral-2);
+        }
+
+        .mobile-filter-clear {
+          font-size: 16px;
+          font-weight: 600;
+          color: var(--text-primary-interactive);
+          text-decoration: none;
+        }
+
+        .mobile-filter-chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .mobile-filter-section .mobile-filter-chip {
+          display: inline-flex;
+          align-items: center;
+          padding: 10px 16px;
+          border: 1px solid rgba(94, 107, 130, 0.32);
+          border-radius: 4px;
+          font-size: 14px;
+          color: var(--text-neutral-1);
+          background: white;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .mobile-filter-section .mobile-filter-chip:hover {
+          border-color: var(--border-primary-interactive);
+        }
+
+        .mobile-filter-section .mobile-filter-chip.active {
+          border: 2px solid var(--border-primary-interactive);
+          background: #E8EFFB;
+          color: var(--text-primary-interactive);
+          font-weight: 500;
         }
 
         /* Booking Info Bar */
         .mobile-booking-info {
           display: flex;
           align-items: center;
-          padding: 12px 0;
+          padding: 12px 16px;
           gap: 0;
           border-bottom: 1px solid var(--border-neutral-3);
           margin-bottom: 0;
@@ -1409,10 +1861,7 @@
         /* Mobile Carousel */
         .mobile-carousel {
           position: relative;
-          width: calc(100% + 48px);
-          margin-left: -24px;
-          margin-right: -24px;
-          margin-bottom: 16px;
+          width: 100%;
         }
 
         .carousel-image {
@@ -2132,6 +2581,24 @@
       box-shadow: 0 0 0 0.25rem rgba(0, 50, 160, 0.25) !important;
     }
 
+    /* Small Primary Button Variant */
+    .btn-primary-sm {
+      background-color: var(--background-primary-brand) !important;
+      border-color: var(--background-primary-brand) !important;
+      color: white !important;
+      border-radius: 100px !important;
+      padding: 4px 12px !important;
+      font-size: 14px !important;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary-sm:hover {
+      background-color: var(--background-primary-interactive) !important;
+      border-color: var(--background-primary-interactive) !important;
+    }
+
     /* Secondary Button Style */
     .btn-outline-primary {
       height: fit-content;
@@ -2413,6 +2880,17 @@
 
       /* Mobile hotel header - hidden on desktop */
       .mobile-hotel-header {
+        display: none;
+      }
+
+      /* Mobile property content - hidden on desktop */
+      .mobile-property-content {
+        display: none;
+      }
+
+      /* Mobile-only sections - hidden on desktop */
+      .mobile-highlights-section,
+      .mobile-location-section {
         display: none;
       }
 
@@ -2950,7 +3428,7 @@
       
       <!-- Mobile Cart and Hamburger -->
       <div class="d-flex align-items-center gap-3 d-lg-none">
-        <a href="#" title="Cart"><i class="bi bi-cart-fill" style="font-size: 22px; color: var(--text-neutral-1);"></i></a>
+        <a href="#" title="Cart"><img src="assets/agoda-icons/cart-empty.svg" alt="Cart" style="width: 22px; height: 22px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <i class="bi bi-list" style="font-size: 22px; color: var(--text-neutral-1);"></i>
         </button>
@@ -2978,7 +3456,7 @@
                  <div class="mr-4" style="font-size:0.95rem; color: var(--text-neutral-2);">English (US)</div>
                  <div data-text="currency" style="color: var(--text-neutral-2);">USD</div>
             </div>
-            <a href="#" title="Cart" class="d-block d-lg-none"><i class="bi bi-cart-fill" style="font-size: 22px; color: var(--text-neutral-1);"></i></a>
+            <a href="#" title="Cart" class="d-block d-lg-none"><img src="assets/agoda-icons/cart-empty.svg" alt="Cart" style="width: 22px; height: 22px;"></a>
             <div class="dropdown">
               <div class="dropdown-toggle d-flex align-items-center" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
                 <div class="text-end me-2">
@@ -4102,6 +4580,172 @@
             <span class="carousel-dot"></span>
           </div>
           <div class="carousel-counter">1/5</div>
+        </div>
+      </div>
+
+      <!-- Mobile Property Content -->
+      <div class="mobile-property-content">
+        <!-- Hotel Info Section -->
+        <div class="mobile-section">
+          <span class="top-rated-badge">Top rated</span>
+          <h1 class="mobile-hotel-name">Oceanview Grand Hotel</h1>
+          <div class="mobile-rating-row">
+            <div class="rating-left">
+              <div class="stars text-warning">★★★★★</div>
+              <div class="mobile-location">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span data-text="destination">Paradise Cove</span>
+              </div>
+            </div>
+            <div class="rating-right">
+              <div class="score-text">8.9 Excellent</div>
+              <div class="reviews-count">3,165 reviews</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="mobile-section">
+          <div class="section-header">
+            <h2 class="section-title">Reviews</h2>
+            <a href="#" class="section-link">See all reviews</a>
+          </div>
+          <div class="review-tags">
+            <span class="review-tag"><i class="bi bi-hand-thumbs-up-fill"></i> Housekeeping</span>
+            <span class="review-tag"><i class="bi bi-hand-thumbs-up-fill"></i> Breakfast</span>
+            <span class="review-tag"><i class="bi bi-hand-thumbs-up-fill"></i> View</span>
+            <span class="review-tag"><i class="bi bi-hand-thumbs-up-fill"></i> Pool</span>
+          </div>
+          <div class="review-cards">
+            <div class="review-card">
+              <p class="review-quote">"Neat, clean and nice."</p>
+              <div class="review-author">
+                <span class="flag">🇸🇬</span>
+                <span>Ethel</span>
+              </div>
+            </div>
+            <div class="review-card">
+              <p class="review-quote">"Excellent hotel with wonderful breakfast."</p>
+              <div class="review-author">
+                <span class="flag">🇬🇧</span>
+                <span>Thomas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Property Highlights Section -->
+        <div class="mobile-highlights-section">
+          <div class="popular-badge-row">
+            <span class="popular-badge">Popular!</span>
+            <span class="booked-today">Booked 11 times today</span>
+          </div>
+          
+          <h3 class="mobile-highlights-title">Property highlights</h3>
+          <div class="mobile-highlights-grid">
+            <div class="mobile-highlight-item">
+              <img src="assets/highlight/hygiene.svg" alt="Hygiene plus" class="mobile-highlight-icon">
+              <span class="mobile-highlight-text">Hygiene plus</span>
+            </div>
+            <div class="mobile-highlight-item">
+              <img src="assets/highlight/pin-star.svg" alt="Sparkling clean" class="mobile-highlight-icon">
+              <span class="mobile-highlight-text">Sparkling clean</span>
+            </div>
+            <div class="mobile-highlight-item">
+              <img src="assets/highlight/easycancel.svg" alt="Free cancellation" class="mobile-highlight-icon">
+              <span class="mobile-highlight-text">Free cancellation available</span>
+            </div>
+          </div>
+
+          <hr class="mobile-highlights-divider">
+
+          <h3 class="mobile-offerings-title">Other key offerings</h3>
+          <div class="mobile-offerings-grid">
+            <div class="mobile-offering-item">
+              <i class="bi bi-check-lg"></i>
+              <span>Front desk [24-hour]</span>
+            </div>
+            <div class="mobile-offering-item">
+              <i class="bi bi-check-lg"></i>
+              <span>Transport to airport</span>
+            </div>
+            <div class="mobile-offering-item">
+              <i class="bi bi-check-lg"></i>
+              <span>Valet parking</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Location Section -->
+        <div class="mobile-location-section">
+          <div class="mobile-location-header">
+            <span class="mobile-location-score">9.2</span>
+            <span class="mobile-location-title">Location</span>
+          </div>
+          
+          <div class="mobile-location-content">
+            <div class="mobile-location-info">
+              <p class="mobile-location-address">
+                1001 Main Ave, City Center,<br>
+                State (ST), &lt;Country&gt;,<br>
+                55403-2440
+              </p>
+              
+              <ul class="mobile-location-list">
+                <li class="mobile-location-item">
+                  <img src="assets/agoda-icons/pin-map.svg" alt="City center">
+                  <span>Inside city center</span>
+                </li>
+                <li class="mobile-location-item">
+                  <img src="assets/agoda-icons/hotel.svg" alt="Popular neighborhood">
+                  <span>Popular neighborhood</span>
+                </li>
+                <li class="mobile-location-item">
+                  <img src="assets/agoda-icons/museum.svg" alt="Museum">
+                  <span>&lt;location&gt;</span>
+                  <span class="distance">1.1 km</span>
+                </li>
+                <li class="mobile-location-item">
+                  <img src="assets/agoda-icons/metro.svg" alt="Metro">
+                  <span>&lt;location&gt;</span>
+                  <span class="distance">1.1 km</span>
+                </li>
+              </ul>
+
+              <a href="#" class="mobile-see-nearby">See nearby</a>
+            </div>
+
+            <div class="mobile-location-map">
+              <button class="btn-primary-sm">View map</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner Section (Mobile) -->
+        <div class="mobile-banner-section">
+          <div class="promo-icon">
+            <i class="bi bi-tag-fill" style="font-size: 24px;"></i>
+          </div>
+          <div class="banner-content">
+            <div class="banner-title">Title for a promotional banner</div>
+            <div class="banner-subtitle">Subtitle for a promotional banner to give more details</div>
+            <a href="#" class="banner-link">See details</a>
+          </div>
+        </div>
+
+        <!-- Filter Section (Mobile) -->
+        <div class="mobile-filter-section">
+          <div class="mobile-filter-header">
+            <span class="mobile-filter-title">Filter room options by:</span>
+            <a href="#" class="mobile-filter-clear">Clear</a>
+          </div>
+          <div class="mobile-filter-chips">
+            <button class="mobile-filter-chip active">Non-smoking (9)</button>
+            <button class="mobile-filter-chip">Free breakfast (3)</button>
+            <button class="mobile-filter-chip">Free cancellation (1)</button>
+            <button class="mobile-filter-chip">King bed (1)</button>
+            <button class="mobile-filter-chip">City view (1)</button>
+          </div>
         </div>
       </div>
 
