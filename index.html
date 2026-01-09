@@ -811,6 +811,158 @@
     #edit-booking-page {
       background: #EFF4FC;
     }
+
+    /* Edit Booking Mobile Header - Hidden on desktop */
+    .edit-booking-mobile-header {
+      display: none;
+    }
+
+    .edit-booking-mobile-navbar {
+      background: var(--background-primary-brand);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .edit-booking-back-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .edit-booking-title {
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .edit-booking-mobile-tabs {
+      background: white;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-neutral-3);
+      padding: 0 56px 0 16px;
+      position: relative;
+    }
+
+    .edit-booking-tab {
+      background: none;
+      border: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-neutral-2);
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+      flex: 1;
+      text-align: center;
+    }
+
+    .edit-booking-tab.active {
+      color: var(--text-primary-interactive);
+    }
+
+    .edit-booking-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--background-primary-brand);
+    }
+
+    .edit-booking-tab-arrow {
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: 1px solid var(--border-neutral-3);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-neutral-1);
+    }
+
+    /* Manage Booking Section - Mobile Only */
+    .manage-booking-mobile {
+      display: none;
+    }
+
+    .manage-booking-card {
+      background: white;
+      border: 1px solid var(--border-neutral-3);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+
+    .manage-booking-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-neutral-1);
+      margin-bottom: 16px;
+    }
+
+    .manage-booking-row {
+      background: #F5F7FA;
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .manage-booking-row-label {
+      font-weight: 600;
+      color: var(--text-neutral-1);
+      font-size: 14px;
+    }
+
+    .manage-booking-row-value {
+      color: var(--text-neutral-2);
+      font-size: 14px;
+    }
+
+    .manage-booking-row-dot {
+      color: var(--text-neutral-2);
+      font-size: 14px;
+    }
+
+    .btn-cancel-booking {
+      width: 100%;
+      padding: 12px 24px;
+      border: 2px solid var(--border-primary-interactive);
+      border-radius: 100px;
+      background: white;
+      color: var(--text-primary-interactive);
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    .btn-cancel-booking:hover {
+      background: var(--background-tertiary-interactive);
+    }
     .edit-booking-sidebar {
       background: #ffffff;
       border: 1px solid var(--border-neutral-3);
@@ -871,7 +1023,7 @@
     .hotel-details-card .card-right {
       width: 260px;
       flex-shrink: 0;
-      padding: 20px;
+      padding: 16px 12px;
       border-left: 1px solid var(--border-neutral-3);
       display: flex;
       flex-direction: column;
@@ -887,9 +1039,9 @@
         border-top: 1px solid var(--border-neutral-3);
       }
     }
-    .hotel-details-card .card-left-row {
-      padding: 16px 24px;
-    }
+      .hotel-details-card .card-left-row {
+        padding: 12px;
+      }
     .hotel-details-card .card-left-row-1 {
       border-bottom: 1px solid var(--border-neutral-3);
     }
@@ -911,6 +1063,20 @@
     }
     .hotel-details-card .checkin-section .checkout-info {
       text-align: right;
+    }
+    .hotel-details-card .checkin-section .checkin-label {
+      font-weight: 600;
+    }
+    .hotel-details-card .checkin-section .checkin-day {
+      font-size: var(--font-size-lg);
+      margin-bottom: 0;
+    }
+    .hotel-details-card .checkin-section .checkin-date {
+      font-size: var(--font-size-lg);
+      margin-bottom: 6px;
+    }
+    .hotel-details-card .checkin-section .checkin-time {
+      font-weight: 600;
     }
     .hotel-details-card .nights-badge {
       background: rgba(239, 244, 252, 1);
@@ -941,9 +1107,9 @@
       padding: 0;
       min-width: 0;
     }
-    .edit-booking-card .card-left-row {
-      padding: 16px 24px;
-    }
+      .edit-booking-card .card-left-row {
+        padding: 12px;
+      }
     .edit-booking-card .card-left-row-1 {
       border-bottom: 1px solid var(--border-neutral-3);
     }
@@ -964,9 +1130,62 @@
         width: 100%;
         border-left: none;
         border-top: 1px solid var(--border-neutral-3);
+        padding: 16px 12px;
       }
       .edit-booking-card .card-right:empty {
         display: none;
+      }
+
+      /* Edit Booking Mobile Header - Show on mobile */
+      .edit-booking-mobile-header {
+        display: block !important;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        margin-left: -16px;
+        margin-right: -16px;
+        width: calc(100% + 32px);
+      }
+
+      /* Hide main navbar when on edit booking page */
+      #edit-booking-page.active ~ .main-navbar,
+      body:has(#edit-booking-page.active) .main-navbar,
+      body:has(#edit-booking-page.active) #main-navbar,
+      body:has(#edit-booking-page.active) nav.navbar {
+        display: none !important;
+      }
+
+      /* Hide sidebar on mobile for edit booking */
+      #edit-booking-page .col-lg-2 {
+        display: none !important;
+      }
+
+      /* Hide back to bookings link on mobile */
+      #edit-booking-page .back-to-bookings {
+        display: none !important;
+      }
+
+      /* Adjust container padding on mobile */
+      #edit-booking-page .container-fluid {
+        padding-top: 0 !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* Add top padding to content below header */
+      #edit-booking-page .container-fluid > .row {
+        padding-top: 16px;
+      }
+
+      /* Show Manage Booking section on mobile */
+      .manage-booking-mobile {
+        display: block !important;
+      }
+
+      /* White footer with top border for edit booking page */
+      body:has(#edit-booking-page.active) .footer {
+        background: white !important;
+        border-top: 1px solid var(--border-neutral-3);
       }
     }
     .edit-booking-card .room-thumb-wrapper {
@@ -984,7 +1203,7 @@
     .cancellation-timeline {
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 2px;
     }
     .cancellation-item {
       display: flex;
@@ -993,20 +1212,33 @@
     }
     .cancellation-item .cancellation-bar {
       width: 4px;
-      min-height: 50px;
-      border-radius: 2px;
+      border-radius: 0;
+    }
+    .cancellation-item:first-child .cancellation-bar {
+      border-radius: 2px 2px 0 0;
+    }
+    .cancellation-item:last-child .cancellation-bar {
+      border-radius: 0 0 2px 2px;
     }
     .cancellation-item.free .cancellation-bar {
       background: var(--text-primary-positive);
     }
     .cancellation-item.partial .cancellation-bar {
-      background: #ffc107;
+      background: #C5D0DB;
     }
     .cancellation-item.non-refundable .cancellation-bar {
-      background: #6c757d;
+      background: #C5D0DB;
     }
     .cancellation-item .cancellation-content {
-      padding-bottom: 12px;
+      padding-bottom: 4px;
+      padding-top: 4px;
+    }
+    .cancellation-item .cancellation-content .fw-semibold {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .cancellation-item .cancellation-content .text-muted {
+      font-size: 12px;
     }
     .cancel-booking-link {
       color: var(--text-primary-interactive);
@@ -1022,20 +1254,25 @@
     .payment-card .booking-paid-banner {
       background: #d4edda;
       color: var(--text-primary-positive);
-      padding: 8px 24px;
+      padding: 8px 12px;
       font-size: var(--font-size-md);
       font-weight: 500;
     }
     .payment-row {
       display: flex;
       justify-content: space-between;
-      padding: 8px 0;
+      padding: 0;
       font-size: var(--font-size-md);
+    }
+    .payment-row + .payment-row {
+      margin-top: 12px;
+    }
+    .card-left-row-2 .payment-row {
+      font-weight: 600;
     }
     .payment-row.total {
       border-top: none;
-      padding-top: 8px;
-      margin-top: 4px;
+      margin-top: 12px;
     }
     .mastercard-icon {
       display: inline-flex;
@@ -5496,6 +5733,24 @@
 
   <!-- Edit Booking Page Section (Hidden by default) -->
   <div id="edit-booking-page" class="section">
+    <!-- Mobile Header for Edit Booking -->
+    <div class="edit-booking-mobile-header">
+      <div class="edit-booking-mobile-navbar">
+        <button class="edit-booking-back-btn" onclick="showSearchResults(); return false;">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <span class="edit-booking-title">Booking details</span>
+      </div>
+      <div class="edit-booking-mobile-tabs">
+        <button class="edit-booking-tab active">Property info</button>
+        <button class="edit-booking-tab">Room info</button>
+        <button class="edit-booking-tab">Guest info</button>
+        <button class="edit-booking-tab-arrow">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
     <div class="container-fluid py-4" style="max-width: 1200px;">
       <div class="row">
         <!-- Sidebar -->
@@ -5518,6 +5773,24 @@
           <a href="#" class="back-to-bookings mb-3 d-inline-flex align-items-center text-md" style="color: var(--text-primary-interactive); text-decoration: none;">
             <i class="bi bi-chevron-left me-1"></i> Back to bookings
           </a>
+
+          <!-- Manage Booking Section - Mobile Only -->
+          <div class="manage-booking-mobile">
+            <div class="manage-booking-card">
+              <h3 class="manage-booking-title">Manage this booking</h3>
+              <div class="manage-booking-row">
+                <span class="manage-booking-row-label">Check in</span>
+                <span class="manage-booking-row-dot">·</span>
+                <span class="manage-booking-row-value">22 Jan 2026 before 14:00</span>
+              </div>
+              <div class="manage-booking-row">
+                <span class="manage-booking-row-label">Free cancellation</span>
+                <span class="manage-booking-row-dot">·</span>
+                <span class="manage-booking-row-value">Before 17 Jan, 2026 at 23:00</span>
+              </div>
+              <button class="btn-cancel-booking">Cancel booking</button>
+            </div>
+          </div>
 
           <!-- Check-in Notification Banner + Booking ID Card -->
           <div class="mb-4">
@@ -5553,24 +5826,23 @@
                 <div class="card-left-row card-left-row-2">
                   <div class="checkin-section">
                     <div class="checkin-info">
-                      <div class="text-muted mb-1 text-sm">Check in</div>
-                      <div class="fw-semibold">Thu, Jan 22, 26</div>
-                      <div class="text-muted text-sm">2:00 PM - 12:00 AM</div>
+                      <div class="checkin-label text-muted mb-1 text-sm fw-bold">Check in</div>
+                      <div class="checkin-day fw-semibold">Thu,</div>
+                      <div class="checkin-date fw-semibold">Jan 22, 26</div>
+                      <div class="checkin-time text-muted text-sm fw-bold">2:00 PM - 12:00 AM</div>
                     </div>
                     <div class="nights-badge">5 Nights</div>
                     <div class="checkout-info">
-                      <div class="text-muted mb-1 text-sm">Check out</div>
-                      <div class="fw-semibold">Wed, Jan 26, 26</div>
-                      <div class="text-muted text-sm">2:00 PM - 12:00 AM</div>
+                      <div class="checkin-label text-muted mb-1 text-sm fw-bold">Check out</div>
+                      <div class="checkin-day fw-semibold">Wed,</div>
+                      <div class="checkin-date fw-semibold">Jan 26, 26</div>
+                      <div class="checkin-time text-muted text-sm fw-bold">2:00 PM - 12:00 AM</div>
                     </div>
                   </div>
                 </div>
               </div>
               <!-- Right Column: Action Links -->
               <div class="card-right">
-                <a href="#" class="booking-action-link d-flex align-items-center mb-2">
-                  <img src="assets/agoda-icons/send.svg" alt="" class="me-2" style="width: 16px; height: 16px;">Get booking confirmation
-                </a>
                 <a href="#" class="booking-action-link d-flex align-items-center">
                   <img src="assets/agoda-icons/document.svg" alt="" class="me-2" style="width: 16px; height: 16px;">View property policies
                 </a>
