@@ -77,102 +77,110 @@
         required: []
       },
       execute: async (params) => {
-        const root = document.documentElement;
-        
-        // Handle CSS variables
-        Object.entries(params).forEach(([key, value]) => {
-          if (key.startsWith('--') || key.includes('-')) {
-            // Skip text content keys for CSS variables
-            if (!['banner-title', 'banner-subtitle', 'headline', 'subheadline', 'destination', 'currency'].includes(key) && !key.includes('hotel') && !key.includes('-name') && !key.includes('-image')) {
-              root.style.setProperty('--' + key, value);
-            }
-          }
-        });
-        
-        // Handle text content updates
-        if (params['banner-title']) {
-          const titleElement = document.querySelector('[data-text="banner-title"]');
-          if (titleElement) titleElement.textContent = params['banner-title'];
-        }
-        
-        if (params['banner-subtitle']) {
-          const subtitleElement = document.querySelector('[data-text="banner-subtitle"]');
-          if (subtitleElement) subtitleElement.textContent = params['banner-subtitle'];
-        }
-        
-        if (params['headline']) {
-          const headlineElement = document.querySelector('[data-text="headline"]');
-          if (headlineElement) headlineElement.textContent = params['headline'];
-        }
-        
-        if (params['subheadline']) {
-          const subheadlineElement = document.querySelector('[data-text="subheadline"]');
-          if (subheadlineElement) subheadlineElement.textContent = params['subheadline'];
-        }
-
-        if (params['hero-background-image']) {
+        try {
           const root = document.documentElement;
-          // Ensure the value has url() wrapper if it doesn't already
-          let imageValue = params['hero-background-image'];
-          if (!imageValue.startsWith('url(')) {
-            imageValue = `url('${imageValue}')`;
-          }
-          root.style.setProperty('--hero-background-image', imageValue);
-        }
-
-        // Handle destination updates
-        if (params['destination']) {
-          // Update search input
-          const searchInput = document.querySelector('input[data-text="destination"]');
-          if (searchInput) searchInput.value = params['destination'];
           
-          // Update all hotel location elements (spans, divs, etc.)
-          const locationElements = document.querySelectorAll('[data-text="destination"]');
-          locationElements.forEach(el => {
-            if (el.tagName === 'INPUT') {
-              el.value = params['destination'];
-            } else {
-              el.textContent = params['destination'];
+          // Handle CSS variables
+          Object.entries(params).forEach(([key, value]) => {
+            if (key.startsWith('--') || key.includes('-')) {
+              // Skip text content keys for CSS variables
+              if (!['banner-title', 'banner-subtitle', 'headline', 'subheadline', 'destination', 'currency'].includes(key) && !key.includes('hotel') && !key.includes('-name') && !key.includes('-image')) {
+                root.style.setProperty('--' + key, value);
+              }
             }
           });
-        }
-        
-        // Handle hotel name and image updates
-        for (let i = 1; i <= 10; i++) {
-          const nameKey = `hotel${i}-name`;
-          const imageKey = `hotel${i}-image`;
           
-          if (params[nameKey]) {
-            // Update all elements with this hotel name (not just the first one)
-            const nameElements = document.querySelectorAll(`[data-text="${nameKey}"]`);
-            nameElements.forEach(el => {
-              el.textContent = params[nameKey];
+          // Handle text content updates
+          if (params['banner-title']) {
+            const titleElement = document.querySelector('[data-text="banner-title"]');
+            if (titleElement) titleElement.textContent = params['banner-title'];
+          }
+          
+          if (params['banner-subtitle']) {
+            const subtitleElement = document.querySelector('[data-text="banner-subtitle"]');
+            if (subtitleElement) subtitleElement.textContent = params['banner-subtitle'];
+          }
+          
+          if (params['headline']) {
+            const headlineElement = document.querySelector('[data-text="headline"]');
+            if (headlineElement) headlineElement.textContent = params['headline'];
+          }
+          
+          if (params['subheadline']) {
+            const subheadlineElement = document.querySelector('[data-text="subheadline"]');
+            if (subheadlineElement) subheadlineElement.textContent = params['subheadline'];
+          }
+
+          if (params['hero-background-image']) {
+            // Ensure the value has url() wrapper if it doesn't already
+            let imageValue = params['hero-background-image'];
+            if (!imageValue.startsWith('url(')) {
+              imageValue = `url('${imageValue}')`;
+            }
+            root.style.setProperty('--hero-background-image', imageValue);
+          }
+
+          // Handle destination updates
+          if (params['destination']) {
+            // Update search input
+            const searchInput = document.querySelector('input[data-text="destination"]');
+            if (searchInput) searchInput.value = params['destination'];
+            
+            // Update all hotel location elements (spans, divs, etc.)
+            const locationElements = document.querySelectorAll('[data-text="destination"]');
+            locationElements.forEach(el => {
+              if (el.tagName === 'INPUT') {
+                el.value = params['destination'];
+              } else {
+                el.textContent = params['destination'];
+              }
             });
           }
           
-          if (params[imageKey]) {
-            const imageEl = document.querySelector(`[data-image="${imageKey}"]`);
-            if (imageEl) imageEl.src = params[imageKey];
+          // Handle hotel name and image updates
+          for (let i = 1; i <= 10; i++) {
+            const nameKey = `hotel${i}-name`;
+            const imageKey = `hotel${i}-image`;
+            
+            if (params[nameKey]) {
+              // Update all elements with this hotel name (not just the first one)
+              const nameElements = document.querySelectorAll(`[data-text="${nameKey}"]`);
+              nameElements.forEach(el => {
+                el.textContent = params[nameKey];
+              });
+            }
+            
+            if (params[imageKey]) {
+              const imageEl = document.querySelector(`[data-image="${imageKey}"]`);
+              if (imageEl) imageEl.src = params[imageKey];
+            }
           }
-        }
 
-        // Handle currency updates
-        if (params['currency']) {
-          const currencyElements = document.querySelectorAll('[data-text="currency"]');
-          currencyElements.forEach(element => {
-            element.textContent = params['currency'];
-          });
-        }
+          // Handle currency updates
+          if (params['currency']) {
+            const currencyElements = document.querySelectorAll('[data-text="currency"]');
+            currencyElements.forEach(element => {
+              element.textContent = params['currency'];
+            });
+          }
 
-        // Handle logo updates
-        if (params['header-logo']) {
-          const headerLogos = document.querySelectorAll('[data-logo="header-logo"]');
-          headerLogos.forEach(logo => logo.src = params['header-logo']);
-        }
+          // Handle logo updates
+          if (params['header-logo']) {
+            const headerLogos = document.querySelectorAll('[data-logo="header-logo"]');
+            headerLogos.forEach(logo => logo.src = params['header-logo']);
+          }
 
-        if (params['footer-logo']) {
-          const footerLogos = document.querySelectorAll('[data-logo="footer-logo"]');
-          footerLogos.forEach(logo => logo.src = params['footer-logo']);
+          if (params['footer-logo']) {
+            const footerLogos = document.querySelectorAll('[data-logo="footer-logo"]');
+            footerLogos.forEach(logo => logo.src = params['footer-logo']);
+          }
+
+          // Return success confirmation
+          return { success: true, message: "Theme applied successfully", appliedParams: Object.keys(params) };
+          
+        } catch (error) {
+          // Return error details
+          return { success: false, error: error.message };
         }
       }
     }
