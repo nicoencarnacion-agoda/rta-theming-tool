@@ -80,100 +80,79 @@
         try {
           const root = document.documentElement;
           
-          // Handle CSS variables
-          Object.entries(params).forEach(([key, value]) => {
-            if (key.startsWith('--') || key.includes('-')) {
-              // Skip text content keys for CSS variables
-              if (!['banner-title', 'banner-subtitle', 'headline', 'subheadline', 'destination', 'currency'].includes(key) && !key.includes('hotel') && !key.includes('-name') && !key.includes('-image')) {
-                root.style.setProperty('--' + key, value);
+          // Pre-defined sets for O(1) lookups
+          const TEXT_CONTENT_KEYS = new Set(['banner-title', 'banner-subtitle', 'headline', 'subheadline', 'destination', 'currency']);
+          const IMAGE_KEYS = new Set(['hero-background-image', 'header-logo', 'footer-logo']);
+          
+          // Batch updates by category
+          const cssUpdates = [];
+          const textUpdates = [];
+          const imageUpdates = [];
+          const hotelUpdates = { names: [], images: [] };
+          
+          // Single pass: categorize all params
+          for (const [key, value] of Object.entries(params)) {
+            const normalizedKey = key.toLowerCase().trim();  // Normalize for matching
+            
+            if (TEXT_CONTENT_KEYS.has(normalizedKey)) {
+              textUpdates.push({ key: normalizedKey, value });
+            } else if (IMAGE_KEYS.has(normalizedKey)) {
+              imageUpdates.push({ key: normalizedKey, value });
+            } else if (normalizedKey.startsWith('hotel')) {
+              const match = normalizedKey.match(/^hotel(\d+)-(name|image)$/);
+              if (match) {
+                const [, num, type] = match;
+                if (type === 'name') hotelUpdates.names.push({ num, value });
+                else hotelUpdates.images.push({ num, value });
               }
+            } else if (normalizedKey.includes('-')) {
+              // It's a CSS variable
+              cssUpdates.push({ key: normalizedKey, value });
+            }
+          }
+          
+          // Apply CSS variables (batched)
+          cssUpdates.forEach(({ key, value }) => {
+            root.style.setProperty('--' + key, value);
+          });
+          
+          // Apply text content updates
+          textUpdates.forEach(({ key, value }) => {
+            if (key === 'destination' || key === 'currency') {
+              // These appear multiple times - update all instances
+              document.querySelectorAll(`[data-text="${key}"]`).forEach(el => {
+                if (el.tagName === 'INPUT') el.value = value;
+                else el.textContent = value;
+              });
+            } else {
+              const el = document.querySelector(`[data-text="${key}"]`);
+              if (el) el.textContent = value;
             }
           });
           
-          // Handle text content updates
-          if (params['banner-title']) {
-            const titleElement = document.querySelector('[data-text="banner-title"]');
-            if (titleElement) titleElement.textContent = params['banner-title'];
-          }
-          
-          if (params['banner-subtitle']) {
-            const subtitleElement = document.querySelector('[data-text="banner-subtitle"]');
-            if (subtitleElement) subtitleElement.textContent = params['banner-subtitle'];
-          }
-          
-          if (params['headline']) {
-            const headlineElement = document.querySelector('[data-text="headline"]');
-            if (headlineElement) headlineElement.textContent = params['headline'];
-          }
-          
-          if (params['subheadline']) {
-            const subheadlineElement = document.querySelector('[data-text="subheadline"]');
-            if (subheadlineElement) subheadlineElement.textContent = params['subheadline'];
-          }
-
-          if (params['hero-background-image']) {
-            // Ensure the value has url() wrapper if it doesn't already
-            let imageValue = params['hero-background-image'];
-            if (!imageValue.startsWith('url(')) {
-              imageValue = `url('${imageValue}')`;
+          // Apply image updates
+          imageUpdates.forEach(({ key, value }) => {
+            if (key === 'hero-background-image') {
+              const imageValue = value.startsWith('url(') ? value : `url('${value}')`;
+              root.style.setProperty('--hero-background-image', imageValue);
+            } else if (key === 'header-logo') {
+              document.querySelectorAll('[data-logo="header-logo"]').forEach(logo => logo.src = value);
+            } else if (key === 'footer-logo') {
+              document.querySelectorAll('[data-logo="footer-logo"]').forEach(logo => logo.src = value);
             }
-            root.style.setProperty('--hero-background-image', imageValue);
-          }
-
-          // Handle destination updates
-          if (params['destination']) {
-            // Update search input
-            const searchInput = document.querySelector('input[data-text="destination"]');
-            if (searchInput) searchInput.value = params['destination'];
-            
-            // Update all hotel location elements (spans, divs, etc.)
-            const locationElements = document.querySelectorAll('[data-text="destination"]');
-            locationElements.forEach(el => {
-              if (el.tagName === 'INPUT') {
-                el.value = params['destination'];
-              } else {
-                el.textContent = params['destination'];
-              }
+          });
+          
+          // Apply hotel updates (only for hotels that exist in params)
+          hotelUpdates.names.forEach(({ num, value }) => {
+            document.querySelectorAll(`[data-text="hotel${num}-name"]`).forEach(el => {
+              el.textContent = value;
             });
-          }
+          });
           
-          // Handle hotel name and image updates
-          for (let i = 1; i <= 10; i++) {
-            const nameKey = `hotel${i}-name`;
-            const imageKey = `hotel${i}-image`;
-            
-            if (params[nameKey]) {
-              // Update all elements with this hotel name (not just the first one)
-              const nameElements = document.querySelectorAll(`[data-text="${nameKey}"]`);
-              nameElements.forEach(el => {
-                el.textContent = params[nameKey];
-              });
-            }
-            
-            if (params[imageKey]) {
-              const imageEl = document.querySelector(`[data-image="${imageKey}"]`);
-              if (imageEl) imageEl.src = params[imageKey];
-            }
-          }
-
-          // Handle currency updates
-          if (params['currency']) {
-            const currencyElements = document.querySelectorAll('[data-text="currency"]');
-            currencyElements.forEach(element => {
-              element.textContent = params['currency'];
-            });
-          }
-
-          // Handle logo updates
-          if (params['header-logo']) {
-            const headerLogos = document.querySelectorAll('[data-logo="header-logo"]');
-            headerLogos.forEach(logo => logo.src = params['header-logo']);
-          }
-
-          if (params['footer-logo']) {
-            const footerLogos = document.querySelectorAll('[data-logo="footer-logo"]');
-            footerLogos.forEach(logo => logo.src = params['footer-logo']);
-          }
+          hotelUpdates.images.forEach(({ num, value }) => {
+            const el = document.querySelector(`[data-image="hotel${num}-image"]`);
+            if (el) el.src = value;
+          });
 
           // Return success confirmation
           return { success: true, message: "Theme applied successfully", appliedParams: Object.keys(params) };
@@ -370,7 +349,8 @@
     
     /* Hide triggers when page nav is visible */
     #page-nav.visible ~ #main-navbar #page-nav-trigger,
-    #page-nav.visible ~ #checkout-navbar .page-nav-trigger {
+    #page-nav.visible ~ #checkout-navbar .page-nav-trigger,
+    #page-nav.visible ~ #edit-booking-page .page-nav-trigger {
       display: none;
     }
     
@@ -5744,6 +5724,14 @@
   <div id="edit-booking-page" class="section">
     <!-- Mobile Header for Edit Booking -->
     <div class="edit-booking-mobile-header">
+      <!-- Page Nav Expand Trigger -->
+      <div class="page-nav-trigger" onclick="showPageNav()">
+        <div class="expand-strip">
+          <span class="expand-indicator">
+            <i class="bi bi-chevron-down"></i> Page Navigation
+          </span>
+        </div>
+      </div>
       <div class="edit-booking-mobile-navbar">
         <button class="edit-booking-back-btn" onclick="showSearchResults(); return false;">
           <i class="bi bi-chevron-left"></i>
